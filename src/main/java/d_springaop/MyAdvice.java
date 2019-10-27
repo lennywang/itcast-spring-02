@@ -1,5 +1,6 @@
 package d_springaop;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint;
 
 /**
@@ -17,9 +18,9 @@ public class MyAdvice {
         System.out.println("这是后置通知（如果出现异常不会调用）");
     }
 
-    public Object around(MethodInvocationProceedingJoinPoint methodInvocationProceedingJoinPoint) throws Throwable {
+    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         System.out.println("这是环绕通知之前的部分");
-        Object proceed = methodInvocationProceedingJoinPoint.proceed();
+        Object proceed = proceedingJoinPoint.proceed();
         System.out.println("这是环绕通知之后的部分");
         return  proceed;
     }
